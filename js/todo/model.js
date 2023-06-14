@@ -69,9 +69,8 @@ export default class Model {
 
         // console.log("удалить из массива заявок индекс =", index)
 
-        this.tasks.splice(index, 1) // уд. 1 элем ,начиная с index 
+        this.tasks.splice(index, 1) 
         this.saveStorage()
-        return ind
     }
 }
 
