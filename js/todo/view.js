@@ -52,7 +52,7 @@ export default class View {
 
     // кнопка Удалить задачу
     removeElement(task) {
-        const element = this.elemRender.listTask.querySelector(`[data-id ="${task}"]`)
+        const element = this.elemRender.listTask.querySelector(`[data-id ="${task.id}"]`)
         element.remove()
     }
 }
