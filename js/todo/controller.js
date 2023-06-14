@@ -31,7 +31,7 @@ view.elemRender.listTask.addEventListener("click", function (e) {
     if (e.target.hasAttribute("data-dell")) {
         const removeId = e.target.closest(".todo-item").dataset.id
         const removeEl = model.complTasks(removeId)
-        model.removeTask(removeEl)
+        model.remoteTask(removeEl)
         view.removeElement(removeEl)
     }
 })
