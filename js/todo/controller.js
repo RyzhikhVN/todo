@@ -6,7 +6,7 @@ const model = new Model()
 const view = new View(model.tasks)
 
 
-// по submit делаем, что бы кнопкой enter тоже добавлялась 
+// добавляем элементы
 view.elemRender.form.addEventListener("submit", function (e) {
     e.preventDefault()
     const newTask = model.addTask(view.elemRender.input.value)
@@ -14,27 +14,29 @@ view.elemRender.form.addEventListener("submit", function (e) {
     view.clearInput()
 })
 
-// работаем с check и id в tasks
+// работа с check и id в tasks
 view.elemRender.listTask.addEventListener("click", function (e) {
 
     if (e.target.getAttribute("type") === "checkbox") {
-
+        // нужно обратиться вверх к родителю с id
         const elemId = e.target.closest(".todo-item").dataset.id
         const taskId = model.complTasks(elemId)
 
-        // поменяем статус на done или active
+        // поменяем статус  done / active
         model.doneTask(taskId)
+        // статус done
         view.veryfyTask(taskId)
     }
 
     // удаление по кнопке
     if (e.target.hasAttribute("data-dell")) {
         const removeId = e.target.closest(".todo-item").dataset.id
-        const removeEl = model.complTasks(removeId)
-        model.remoteTask(removeEl)
-        view.removeElement(removeEl)
+        const elemRemove = model.complTasks(removeId)
+  
+        model.remoteTask(elemRemove)
+        view.removeElement(elemRemove)
     }
-})
 
+})
 
 
